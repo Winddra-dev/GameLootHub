@@ -1,0 +1,757 @@
+/* ========================================================= */
+/* 1. VARIABEL WARNA */
+/* ========================================================= */
+:root {
+    --color-primary: #a52a2a; /* Bata Merah Gelap */
+    --color-secondary: #ff4500; /* Orange Merah (Orangered) */
+    --color-tertiary: #8b4513; /* Coklat Sedang (SaddleBrown) */
+    --color-bg-light: #f5f5dc; /* Krem */
+    --color-bg-dark: #2c2c2c; /* Abu Gelap */
+    --color-text-light: #f5f5f5;
+    --color-text-dark: #333;
+    --color-accent: #ffd700; /* Emas untuk Aksen */
+
+    --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-dark: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================================= */
+/* 2. BASE & TYPOGRAPHY */
+/* ========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: var(--color-bg-light);
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    color: var(--color-tertiary);
+    margin-bottom: 0.5em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-primary);
+}
+
+section {
+    padding: 60px 5%;
+    min-height: 100vh;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--color-primary);
+    margin: 10px auto 0;
+}
+
+/* ========================================================= */
+/* 3. NAVBAR & HEADER */
+/* ========================================================= */
+.navbar-header {
+    background: var(--color-bg-dark);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-dark);
+}
+
+.logo {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--color-accent); /* GLH dengan warna emas */
+    letter-spacing: 2px;
+}
+
+.nav-menu a {
+    color: var(--color-text-light);
+    margin-left: 25px;
+    font-weight: 500;
+    font-size: 1.1em;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--color-secondary);
+    transform: translateY(-2px);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--color-secondary);
+    transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.burger-menu {
+    display: none;
+    color: var(--color-text-light);
+    font-size: 1.5em;
+    cursor: pointer;
+}
+/* about
+/* ========================================================= */
+/* 5. TENTANG KAMI (ABOUT SECTION) - REVISI PENAMPILAN INDAH */
+/* ========================================================= */
+.about-section {
+    background-color: var(--color-bg-light); 
+    text-align: center; /* Rata tengah konten */
+    padding: 80px 5%;
+}
+
+.about-section .section-title {
+    color: var(--color-primary);
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    font-size: 1.15em;
+    line-height: 1.8;
+    color: var(--color-text-dark);
+}
+
+.about-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 30px auto 0 auto;
+    max-width: 900px;
+    display: flex; /* Menggunakan Flexbox untuk tata letak kolom */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.about-section ul li {
+    background-color: #fff8e1; /* Warna krem yang lebih terang */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    font-weight: 500;
+    color: var(--color-tertiary);
+    flex: 1 1 200px; /* Fleksibel, minimal lebar 200px */
+    border-left: 5px solid var(--color-secondary); /* Aksen garis bata-orange */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.about-section ul li:hover {
+    transform: translateY(-5px);
+    background-color: #ffeadb; /* Sedikit sentuhan oranye saat hover */
+}
+
+.about-section ul li::before {
+    content: '★'; /* Ganti checklist default dengan bintang untuk gaya */
+    color: var(--color-secondary);
+    font-size: 1.2em;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Penyesuaian Responsif untuk Daftar Poin */
+@media (max-width: 600px) {
+    .about-section ul {
+        flex-direction: column;
+    }
+
+    .about-section ul li {
+        flex: 1 1 100%;
+    }
+}
+/* ========================================================= */
+/* 4. HERO SECTION */
+/* ========================================================= */
+.hero-section {
+    background-color: #362828; /* Coklat Gelap Kemerahan */
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    min-height: 90vh;
+}
+
+.hero-content {
+    max-width: 55%;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: var(--color-accent);
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.hero-image-container {
+    max-width: 45%;
+    text-align: center;
+}
+
+.hero-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: var(--shadow-dark);
+    animation: floating 3s ease-in-out infinite alternate; /* Animasi Mengambang */
+}
+
+@keyframes floating {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+.cta-button {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: var(--color-primary);
+    transform: scale(1.05);
+}
+
+/* ========================================================= */
+/* 5. PRODUCT SECTION */
+/* ========================================================= */
+.product-section {
+    background-color: var(--color-bg-light);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.product-card {
+    background: #fff;
+    padding: 70px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 3px solid var(--color-tertiary);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.platform-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--color-text-light);
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 0.85em;
+}
+
+.roblox {
+    background-color: #000;
+}
+
+.growtopia {
+    background-color: #008000; /* Hijau */
+}
+
+.price {
+    font-size: 1.5em;
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.buy-button {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.buy-button:hover {
+    background-color: var(--color-secondary);
+}
+
+.view-all {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--color-tertiary);
+}
+
+/* ========================================================= */
+/* 6. REVIEW SECTION */
+/* ========================================================= */
+.review-section {
+    background-color: #4b3832; /* Coklat tua sedikit gelap */
+    color: var(--color-text-light);
+}
+
+.review-section .section-title {
+    color: var(--color-accent);
+}
+
+.review-section .section-title::after {
+    background: var(--color-accent);
+}
+
+.review-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 450px;
+    box-shadow: var(--shadow-dark);
+    border-left: 5px solid var(--color-secondary);
+    font-style: italic;
+}
+
+.review-card small {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    text-align: right;
+    color: var(--color-accent);
+}
+
+/* ========================================================= */
+/* 7. CONTACT & FORUM SECTION */
+/* ========================================================= */
+.contact-section {
+    background-color: var(--color-bg-light);
+    text-align: center;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 100%;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.forum-section {
+    background-color: var(--color-tertiary);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 80px 5%;
+}
+
+.forum-section .section-title {
+    color: var(--color-text-light);
+}
+
+.forum-section .section-title::after {
+    background: var(--color-secondary);
+}
+
+.forum-section p {
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+/* ========================================================= */
+/* 8. FOOTER */
+/* ========================================================= */
+footer {
+    background: var(--color-bg-dark);
+    color: var(--color-text-light);
+    padding: 30px 5%;
+    text-align: center;
+    border-top: 5px solid var(--color-primary);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--color-accent);
+}
+
+.social-icons a {
+    color: var(--color-text-light);
+    font-size: 1.8em;
+    margin-left: 20px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--color-secondary);
+    transform: scale(1.2) rotate(5deg);
+}
+
+.copyright {
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+/* ========================================================= */
+/* 9. MOBILE SPECIFIC (BOTTOM 'BUY NOW' BUTTON) */
+/* ========================================================= */
+.buy-now-mobile {
+    display: none; /* Default tersembunyi */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    z-index: 999;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+.buy-now-mobile:hover {
+    background-color: var(--color-primary);
+}
+
+/* ========================================================= */
+/* 10. ANIMASI & UTILITY (dari index.html) */
+/* ========================================================= */
+/* Contoh keyframe dasar (Tambahkan lebih banyak jika perlu) */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.animate__fadeInUp { animation: fadeInUp 1s ease-out; }
+.animate__zoomIn { animation: zoomIn 1s ease-out; }
+.animate__fadeInRight { animation: fadeInRight 1s ease-out; }
+
+.delay-05s { animation-delay: 0.5s; }
+.delay-1s { animation-delay: 1s; }
+.delay-03s { animation-delay: 0.3s; }
+.delay-06s { animation-delay: 0.6s; }
+
+/* ========================================================= */
+/* 11. MEDIA QUERIES (RESPONSIVITAS) */
+/* ========================================================= */
+
+/* Tablet dan Mobile (Max-width 768px) */
+@media (max-width: 768px) {
+    /* 1. Navbar */
+    .nav-menu {
+        position: absolute;
+        top: 60px; /* Di bawah header */
+        left: 0;
+        width: 100%;
+        background-color: var(--color-bg-dark);
+        flex-direction: column;
+        display: none; /* Sembunyikan secara default */
+        padding: 20px 0;
+        box-shadow: var(--shadow-dark);
+        transition: max-height 0.3s ease-out;
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu a {
+        margin: 10px 0;
+        padding: 10px 5%;
+        text-align: center;
+        width: 100%;
+    }
+
+    .burger-menu {
+        display: block; /* Tampilkan burger menu */
+    }
+
+    /* 2. Hero Section */
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 100px; /* Tambahan padding agar tidak tertutup header */
+    }
+
+    .hero-content, .hero-image-container {
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .hero-image {
+        max-width: 80%;
+    }
+
+    /* 3. Product Grid */
+    .product-grid {
+        grid-template-columns: 1fr; /* Satu kolom */
+    }
+
+    /* 4. Review Section */
+    .review-container {
+        gap: 20px;
+    }
+
+    .review-card {
+        max-width: 100%;
+    }
+
+    /* 5. Footer */
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-logo {
+        margin-bottom: 15px;
+    }
+
+    .social-icons {
+        margin-bottom: 15px;
+    }
+
+    .social-icons a {
+        margin: 0 10px;
+    }
+
+    /* 6. Mobile 'Buy Now' Button */
+    .buy-now-mobile {
+        display: block; /* Tampilkan di versi mobile */
+    }
+}
+
+/* Small Mobile (Max-width 480px) */
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2em;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    /* Sesuaikan padding pada semua section */
+    section {
+        padding: 40px 5%;
+    }
+}   
+
+/* ========================================================= */
+/* 5. PRODUCT SECTION - REVISI MENARIK & UNIK */
+/* ========================================================= */
+.product-section {
+    background-color: var(--color-bg-light);
+    padding: 80px 5%;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px; /* Jarak lebih besar */
+    margin-bottom: 40px;
+}
+
+.product-card {
+    background: #fff;
+    padding: 20px; /* Padding dikurangi untuk memberi ruang pada konten */
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Shadow lebih tebal */
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: none; /* Hilangkan border statis */
+    overflow: hidden;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: scale(1.05) translateY(-15px); /* Efek zoom-up yang lebih dramatis */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.product-card img {
+    width: 90%; /* Sedikit lebih kecil agar ada padding */
+    height: 180px;
+    object-fit: contain; /* Penting agar gambar tidak terpotong */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.1) rotate(2deg); /* Animasi gambar saat hover */
+}
+
+
+.product-card h3 {
+    color: var(--color-tertiary);
+    position: relative;
+    z-index: 10;
+}
+
+.product-card .price {
+    color: var(--color-primary);
+    font-size: 1.6em;
+    position: relative;
+    z-index: 10;
+}
+
+.product-card .buy-button {
+    background-color: var(--color-primary);
+    position: relative;
+    z-index: 10;
+    /* Ubah warna tombol agar kontras dengan overlay */
+}
+
+/* ========================================================= */
+/* 6. REVIEW SECTION - REVISI DINAMIS */
+/* ========================================================= */
+.review-section {
+    background: linear-gradient(135deg, #4b3832, #6b4e47); /* Gradient Coklat Tua */
+    color: var(--color-text-light);
+    padding: 80px 5%;
+}
+
+.review-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.15); /* Sedikit lebih solid */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-left: 5px solid var(--color-accent); /* Aksen Emas */
+    font-style: italic;
+    transition: background 0.3s ease;
+}
+
+.review-card:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.02);
+}
+
+.review-card p {
+    font-size: 1.05em;
+    margin-bottom: 15px;
+    min-height: 80px; /* Memberi tinggi minimum agar card terlihat seragam */
+}
+
+.review-card small {
+    color: var(--color-secondary); /* Warna Orange Merah untuk nama */
+    font-size: 0.9em;
+    font-weight: bold;
+}
